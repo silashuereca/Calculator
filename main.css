@@ -25,10 +25,11 @@ input {
   text-align: right;
   background-color: white;
 }
-#main-container #output-container h1 {
-  margin-right: 18px;
-  padding-top: 30px;
+#main-container #output-container #output {
+  width: 100%;
+  height: 100%;
   font-size: 45px;
+  text-size-adjust: auto;
 }
 
 #clear-divide-container {
@@ -81,11 +82,13 @@ input {
 }
 
 .btn {
+  background-color: white;
   font-size: 30px;
   width: 100%;
   height: 100%;
   border-radius: 10px;
   cursor: pointer;
+  outline: none;
 }
 
 .btn:hover {

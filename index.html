@@ -10,7 +10,7 @@
 <body>
 
   <div id="main-container">
-    <div id="output-container" ><h1 id="output">0</h1></div>
+    <div id="output-container" ><input id="output" type="text" style="text-align: right; font-size: 50px" value=""></div>
     <div id="clear-divide-container">
       <div id="clear-container">
         <input type="button" class="btn" value="AC">
@@ -49,7 +49,7 @@
           <input type="button" class="btn" value="9">
         </div>
         <div class="number">
-          <input type="button" class="btn" value="&#8701">
+          <input type="button" class="btn arrow" value="DEL">
         </div>
         <div class="number">
           <input type="button" class="btn" value="0">
@@ -61,7 +61,7 @@
       </div>
       <div id="operator-container">
         <div class="operator">
-          <input type="button" class="btn operators" value="x">
+          <input type="button" class="btn operators" data-key="*" value="*">
         </div>
         <div class="operator">
           <input type="button" class="btn operators" value="-">
