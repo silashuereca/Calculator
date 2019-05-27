@@ -1,6 +1,6 @@
 let displayString;
 let inputString;
-let a , b;
+let operator, a , b;
 let display = document.getElementById('output');
 
 
@@ -10,33 +10,43 @@ container.addEventListener('click', buttons);
 
 function buttons(e) {
   element = e.target.value
-  operator = e.target.key
-  inputHandler(element, operator)
+  inputHandler(element)
 }
 
-// loading in all button presses
+// loading in all button presses and thier values
 function inputHandler(element) {
+  
+  if(element !== 'DEL' 
+      && element !== 'AC'
+      && element !== '*'
+      && element !== '='
+      && element !== '+'
+      && element !== '-'
+      && element !== '/') {
+      display.value += element;
+      } 
+      
+  if(element === '+'
+     || element === '/'
+     || element === '-'
+     || element === '*') {
+        a = parseInt(display.value);
+        operator = element;
+        display.value = '';
+      }
 
- if(element !== 'DEL' 
-    && element !== 'AC'
-    && element !== '/') {
-     console.log(display.value += element);
-    } 
     
-    if(operator === '/') {
-      console.log(a = operator);
-    }
 
-  if(element === '=') {
-    operate(a, b, operator)
+  if(element === 'AC'){clearAll()}
+  if(element === 'DEL') {console.log(backSpace())}
+
+  if (element === '='){    
+    console.log(operate(a, parseInt(display.value), operator));   
   }
 
- if(element === 'AC'){clearAll()}
- if(element === 'DEL') {console.log(backSpace())}
-
-
- 
 }
+
+
 
 //Clearing all content
 function clearAll() {
@@ -48,9 +58,13 @@ function backSpace() {
   display.value = display.value.substr(0 , display.value.length -1 )
 }
 
-// Storing values in display
+// Updating the display with different restrictions
 function updateDisplay(result) {
-  return console.log(display.value = result)
+  
+  if (result !== NaN && result !== undefined){
+    return display.value = result;
+  }
+  
 }
 
 
@@ -66,34 +80,34 @@ function multiply(num1, num2) {return num1 * num2;}
 
 // Calculating values here
 function operate(num1, num2, operator) {
-  let a = num1;
-  let b = num2;
   let result;
+
 
   switch (operator) {
     case '+':
-     result = add(a, b);
+     result = add(num1, num2);
+     break;
     case '-':
-     result = subtract(a , b);
+     result = subtract(num1 , num2);
+     break
     case '/':
-     if(b != 0) {
-     result = divide(a , b);
+     if(num2 != 0) {
+     result = divide(num1 , num2);
      } else {
-       'Error'
+       result = 'Error'
+       result = ''
      }
+     break;
     case '*':
-     result = multiply(a , b);
+     result = multiply(num1 , num2);
+     break;
+    
     
   }
 
-    //passing in the result to be displayed
+    
    return console.log(updateDisplay(result)) 
 }
-
-  
-
-
-
 
 
 
