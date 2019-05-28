@@ -1,48 +1,48 @@
-let displayString;
-let inputString;
-let operator, a , b;
+let operator, a, b;
 let display = document.getElementById('output');
+
+
 
 
 // targeting all buttons 
 const container = document.getElementById('main-container')
 container.addEventListener('click', buttons);
-
 function buttons(e) {
-  element = e.target.value
+  element = e.target.value;
+ 
   inputHandler(element)
 }
+
 
 // loading in all button presses and thier values
 function inputHandler(element) {
   
-  if(element !== 'DEL' 
-      && element !== 'AC'
-      && element !== '*'
-      && element !== '='
-      && element !== '+'
-      && element !== '-'
-      && element !== '/') {
-      display.value += element;
-      } 
-      
-  if(element === '+'
-     || element === '/'
-     || element === '-'
-     || element === '*') {
-        a = parseInt(display.value);
-        operator = element;
-        display.value = '';
-      }
-
-    
-
-  if(element === 'AC'){clearAll()}
-  if(element === 'DEL') {console.log(backSpace())}
-
-  if (element === '='){    
-    console.log(operate(a, parseInt(display.value), operator));   
+  if (['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'].indexOf(element) !== -1) {
+    a = display.value += element;
+  } 
+  
+  if(['/', '*', '+', '-'].indexOf(element) !== -1){
+    operator = element;
+    display.value = '';
+    b = a
   }
+
+  if(element === '.'){
+    if(!display.value.includes('.')){
+      display.value += element;
+    }
+  }
+  
+  
+  if(element == '=') {
+    if(display.value !== ''){
+      operate(parseFloat(a) , parseFloat(b) , operator)
+    }
+  }
+
+  if(element == 'AC'){return clearAll()};
+  if(element == 'DEL'){return backSpace()}
+ 
 
 }
 
@@ -55,15 +55,16 @@ function clearAll() {
 
 //Deleing last character in calculator
 function backSpace() {
+
   display.value = display.value.substr(0 , display.value.length -1 )
+
 }
+
 
 // Updating the display with different restrictions
 function updateDisplay(result) {
-  
-  if (result !== NaN && result !== undefined){
-    return display.value = result;
-  }
+ 
+  return display.value = result;
   
 }
 
@@ -95,7 +96,6 @@ function operate(num1, num2, operator) {
      result = divide(num1 , num2);
      } else {
        result = 'Error'
-       result = ''
      }
      break;
     case '*':

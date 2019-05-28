@@ -103,4 +103,11 @@ input {
   background-color: white;
 }
 
+@media only screen and (max-device-width: 812px) {
+  #main-container {
+    width: 95%;
+    height: 550px;
+  }
+}
+
 /*# sourceMappingURL=main.css.map */
