@@ -1,6 +1,8 @@
-let operator, a, b;
+let operator;
+let a;
+let b;
 let display = document.getElementById('output');
-
+let inputString;
 
 
 
@@ -17,27 +19,32 @@ function buttons(e) {
 // loading in all button presses and thier values
 function inputHandler(element) {
   
+
   if (['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'].indexOf(element) !== -1) {
     a = display.value += element;
   } 
   
   if(['/', '*', '+', '-'].indexOf(element) !== -1){
     operator = element;
+    b = display.value
     display.value = '';
-    b = a
-  }
-
+  
+    
+  } 
+  
   if(element === '.'){
     if(!display.value.includes('.')){
       display.value += element;
     }
-  }
-  
+  } 
   
   if(element == '=') {
     if(display.value !== ''){
-      operate(parseFloat(a) , parseFloat(b) , operator)
-    }
+      
+      console.log(a, b, operator)
+      operate(parseFloat(b), parseFloat(a), operator)
+      
+    } 
   }
 
   if(element == 'AC'){return clearAll()};
